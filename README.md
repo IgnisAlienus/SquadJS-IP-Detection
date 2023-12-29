@@ -1,4 +1,20 @@
 # THIS PLUGIN IS IN A ALPHA STATE
+<div align="center">
+
+[![GitHub Release](https://img.shields.io/github/release/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/releases)
+[![GitHub Contributors](https://img.shields.io/github/contributors/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/graphs/contributors)
+[![GitHub Release](https://img.shields.io/github/license/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/blob/master/LICENSE)
+
+<br>
+
+[![GitHub Issues](https://img.shields.io/github/issues/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr-raw/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/pulls)
+[![GitHub Stars](https://img.shields.io/github/stars/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/stargazers)
+[![Discord](https://img.shields.io/discord/1174357658971668551.svg?style=flat-square&logo=discord)](https://discord.gg/psg)
+
+<br><br>
+</div>
+
 ## Planned Updates
 - Once the Master SquadJS Branch decides how they will log IPs to `dblog` I will add an option to detect and kick if an IP is joining your Server that already exists somewhere in your `dblog` Database.
 
