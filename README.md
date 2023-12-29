@@ -10,7 +10,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr-raw/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/pulls)
 [![GitHub Stars](https://img.shields.io/github/stars/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/stargazers)
-[![Discord](https://img.shields.io/discord/1174357658971668551.svg?style=flat-square&logo=discord)](https://discord.gg/psg)
+[![Discord](https://img.shields.io/discord/550167328889896960.svg?style=flat-square&logo=discord)](https://discord.gg/psg)
 
 <br><br>
 </div>
