@@ -152,12 +152,13 @@ async function checkVPNIPAddress(ipAddress) {
       if (ip.includes('/')) {
         // If the IP is in CIDR notation
         if (isIPInRange(ipAddress, ip)) {
-          console.log(`${ipAddress} is in the range of ${ip}`);
+          console.log(`IP address ${ipAddress} matched on CIDR ${ip}`);
           return true;
         }
       } else {
         // If the IP is a single IP address
         if (ipAddress === ip) {
+          console.log(`IP address ${ipAddress} matched on single IP ${ip}`);
           return true;
         }
       }
@@ -175,17 +176,18 @@ function isIPInRange(ipAddress, cidr) {
   const subnetParts = subnet.split('.').map(Number);
   const ipParts = ipAddress.split('.').map(Number);
 
-  const subnetBinary = subnetParts
-    .map((part) => part.toString(2).padStart(8, '0'))
-    .join('');
-  const ipBinary = ipParts
-    .map((part) => part.toString(2).padStart(8, '0'))
-    .join('');
+  const subnetBinary = subnetParts.reduce(
+    (sum, part, index) => sum + (part << ((3 - index) * 8)),
+    0
+  );
+  const ipBinary = ipParts.reduce(
+    (sum, part, index) => sum + (part << ((3 - index) * 8)),
+    0
+  );
 
-  const subnetMasked = subnetBinary.slice(0, mask);
-  const ipMasked = ipBinary.slice(0, mask);
+  const maskBinary = -1 << (32 - mask);
 
-  return subnetMasked === ipMasked;
+  return (subnetBinary & maskBinary) === (ipBinary & maskBinary);
 }
 
 // Retrieve the latest version from GitHub
