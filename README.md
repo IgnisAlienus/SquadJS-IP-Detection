@@ -1,4 +1,3 @@
-# THIS PLUGIN IS IN A ALPHA STATE
 <div align="center">
 
 [![GitHub Release](https://img.shields.io/github/release/IgnisAlienus/SquadJS-IP-Detection.svg?style=flat-square)](https://github.com/IgnisAlienus/SquadJS-IP-Detection/releases)
