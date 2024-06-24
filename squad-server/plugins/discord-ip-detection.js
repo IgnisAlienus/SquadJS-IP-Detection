@@ -64,7 +64,7 @@ export default class DiscordIPDetection extends DiscordBasePlugin {
   async checkVersion() {
     const owner = 'IgnisAlienus';
     const repo = 'SquadJS-IP-Detection';
-    const currentVersion = 'v0.1.0';
+    const currentVersion = 'v1.0.0';
 
     try {
       const latestVersion = await getLatestVersion(owner, repo);
