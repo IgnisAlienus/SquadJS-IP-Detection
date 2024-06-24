@@ -19,27 +19,29 @@ export default class DiscordIPDetection extends DiscordBasePlugin {
         required: true,
         description: 'The ID of the channel to log to.',
         default: '',
-        example: '667741905228136459'
+        example: '667741905228136459',
       },
       color: {
         required: false,
         description: 'The color of the embed.',
-        default: 16711680
+        default: 16711680,
       },
       sendDiscordMessage: {
         required: false,
         default: true,
-        description: 'Do you want to send a Discord Message when a VPN is detected?'
+        description:
+          'Do you want to send a Discord Message when a VPN is detected?',
       },
       kickVPNs: {
         required: false,
         default: false,
-        description: 'Do you want to Kick Detected VPNs?'
+        description: 'Do you want to Kick Detected VPNs?',
       },
       kickVPNsMessage: {
         required: false,
         default: 'Server Protection: VPN Detected - Please join without a VPN.',
-        description: 'Kick Message Displayed to the Player when they are Kicked for using a VPN.'
+        description:
+          'Kick Message Displayed to the Player when they are Kicked for using a VPN.',
       },
     };
   }
@@ -68,9 +70,12 @@ export default class DiscordIPDetection extends DiscordBasePlugin {
       const latestVersion = await getLatestVersion(owner, repo);
 
       if (currentVersion !== latestVersion) {
-        this.verbose(1, 'A new version is available. Please update your plugin.');
+        this.verbose(
+          1,
+          'A new version is available. Please update your plugin.'
+        );
         this.sendDiscordMessage({
-          content: `A new version of \`SquadJS-IP-Detection\` is available. Please update your plugin. Current version: \`${currentVersion}\` [Latest version](https://github.com/IgnisAlienus/SquadJS-IP-Detection): \`${latestVersion}\``
+          content: `A new version of \`SquadJS-IP-Detection\` is available. Please update your plugin. Current version: \`${currentVersion}\` [Latest version](https://github.com/IgnisAlienus/SquadJS-IP-Detection): \`${latestVersion}\``,
         });
       } else {
         this.verbose(1, 'You are running the latest version.');
@@ -84,9 +89,12 @@ export default class DiscordIPDetection extends DiscordBasePlugin {
     const ipAddress = info.ip;
 
     checkVPNIPAddress(ipAddress)
-      .then(isVPN => {
+      .then((isVPN) => {
         if (isVPN === true) {
-          this.verbose(1, `${ipAddress} | ${info.player.steamID} | ${info.eosID} | ${info.player.name} is a known VPN IP address.`);
+          this.verbose(
+            1,
+            `${ipAddress} | ${info.player.steamID} | ${info.eosID} | ${info.player.name} is a known VPN IP address.`
+          );
           if (this.options.sendDiscordMessage === true) {
             this.sendDiscordMessage({
               embed: {
@@ -95,33 +103,39 @@ export default class DiscordIPDetection extends DiscordBasePlugin {
                 fields: [
                   {
                     name: 'Player',
-                    value: info.player.name
+                    value: info.player.name,
                   },
                   {
                     name: 'SteamID',
-                    value: `[${info.player.steamID}](https://steamcommunity.com/profiles/${info.steamID})`
+                    value: `[${info.player.steamID}](https://steamcommunity.com/profiles/${info.steamID})`,
                   },
                   {
                     name: 'EOSID',
-                    value: info.eosID
+                    value: info.eosID,
                   },
                   {
                     name: 'IP',
-                    value: info.ip
-                  }
+                    value: info.ip,
+                  },
                 ],
-                timestamp: info.time.toISOString()
-              }
+                timestamp: info.time.toISOString(),
+              },
             });
           }
           if (this.options.kickVPNs === true) {
-            this.server.rcon.kick(info.player.steamID, `${this.options.kickVPNsMessage}`);
+            this.server.rcon.kick(
+              info.player.steamID,
+              `${this.options.kickVPNsMessage}`
+            );
           }
         } else {
-          this.verbose(1, `${ipAddress} | ${info.player.steamID} | ${info.eosID} | ${info.player.name} is not a known VPN IP address.`);
+          this.verbose(
+            1,
+            `${ipAddress} | ${info.player.steamID} | ${info.eosID} | ${info.player.name} is not a known VPN IP address.`
+          );
         }
       })
-      .catch(error => {
+      .catch((error) => {
         this.verbose(1, 'Error checking VPN IP address:', error);
       });
   }
@@ -129,7 +143,9 @@ export default class DiscordIPDetection extends DiscordBasePlugin {
 
 async function checkVPNIPAddress(ipAddress) {
   try {
-    const response = await axios.get('https://raw.githubusercontent.com/X4BNet/lists_vpn/main/ipv4.txt');
+    const response = await axios.get(
+      'https://raw.githubusercontent.com/X4BNet/lists_vpn/main/ipv4.txt'
+    );
     const ipList = response.data.split('\n');
 
     for (const ip of ipList) {
@@ -159,8 +175,12 @@ function isIPInRange(ipAddress, cidr) {
   const subnetParts = subnet.split('.').map(Number);
   const ipParts = ipAddress.split('.').map(Number);
 
-  const subnetBinary = subnetParts.map(part => part.toString(2).padStart(8, '0')).join('');
-  const ipBinary = ipParts.map(part => part.toString(2).padStart(8, '0')).join('');
+  const subnetBinary = subnetParts
+    .map((part) => part.toString(2).padStart(8, '0'))
+    .join('');
+  const ipBinary = ipParts
+    .map((part) => part.toString(2).padStart(8, '0'))
+    .join('');
 
   const subnetMasked = subnetBinary.slice(0, mask);
   const ipMasked = ipBinary.slice(0, mask);
