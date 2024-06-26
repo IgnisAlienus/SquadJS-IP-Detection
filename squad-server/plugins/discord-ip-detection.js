@@ -43,6 +43,12 @@ export default class DiscordIPDetection extends DiscordBasePlugin {
         description:
           'Kick Message Displayed to the Player when they are Kicked for using a VPN.',
       },
+      whitelist: {
+        required: false,
+        description: 'A list of IP addresses that are whitelisted.',
+        default: [],
+        example: ['123.456.78.90', '98.76.54.32'],
+      },
     };
   }
 
@@ -87,6 +93,12 @@ export default class DiscordIPDetection extends DiscordBasePlugin {
 
   async onPlayerConnected(info) {
     const ipAddress = info.ip;
+
+    // Check if the IP address is whitelisted
+    if (this.options.whitelist && this.options.whitelist.includes(ipAddress)) {
+      this.verbose(1, `${ipAddress} is whitelisted. Skipping VPN check.`);
+      return;
+    }
 
     checkVPNIPAddress(ipAddress)
       .then((isVPN) => {

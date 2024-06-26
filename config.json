@@ -1,10 +1,11 @@
-  {
-    "plugin": "DiscordIPDetection",
-    "enabled": true,
-    "discordClient": "discord",
-    "channelID": "728354522535297064",
-    "color": 16711680,
-    "sendDiscordMessage": true,
-    "kickVPNs": false,
-    "kickVPNsMessage": "Server Protection: VPN Detected - Please join without a VPN."
-  }
+{
+  "plugin": "DiscordIPDetection",
+  "enabled": true,
+  "discordClient": "discord",
+  "channelID": "728354522535297064",
+  "color": 16711680,
+  "sendDiscordMessage": true,
+  "kickVPNs": false,
+  "kickVPNsMessage": "Server Protection: VPN Detected - Please join without a VPN.",
+  "whitelist": ["123.456.78.90", "98.76.54.32"]
+}
